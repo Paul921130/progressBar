@@ -16,6 +16,7 @@
 	// 下面是DEFAULTS物件 
 	Module.DEFAULTS = {
 			speed:3000,
+			progressNumber:50,
             radius: '0px',
             height: '3px',
             width: '100%'
@@ -26,7 +27,7 @@
 	// document.getElementById('result').style.transition=this.option.speed+'ms';
 	
 	Module.prototype.init = function () {
- 			var progressNumber =20;
+ 			var progressNumber =0;
  			document.getElementById('result').style.width= progressNumber+'%';
 			this.addTransition();
 	};
@@ -37,7 +38,7 @@
 
 	Module.prototype.assignPercent = function(progressNumber){
 		this.addTransition();
-		var progressNumber =50;
+		var progressNumber;
 		document.getElementById('result').style.width= progressNumber+'%';
 		console.log(progressNumber +'%');
 		return  progressNumber;
