@@ -38,8 +38,7 @@
 
 	Module.prototype.assignPercent = function(progressNumber){
 		this.addTransition();
-		var progressNumber;
-		document.getElementById('result').style.width= progressNumber+'%';
+		document.getElementById('result').style.width= this.option.progressNumber+'%';
 		console.log(progressNumber +'%');
 		return  progressNumber;
 	}
