@@ -1,0 +1,13 @@
+.ps_flpk{
+	margin: 90px auto;
+	width: 800px;
+	height: 4px;
+	background-color: #aaa;
+}
+.result{
+	height: 4px;
+	background-color: pink;
+}
+.transition{
+	transition: 1000ms;
+}
