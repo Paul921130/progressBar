@@ -22,22 +22,15 @@
 	</div>
 </div>
 <div class="ps_flpk">
-	<div class="result" ></div>
+		<div class="result" id="result"></div>
 </div>
 
 
 <script>
 
-$('.ps_flpk').ps_flpk({
-	speed:1000,//設定動畫在多久內完成
-	progressNumber:78,//是錯的 不應該在這裡設定
-
+$('.result').ps_flpk({
+	speed:3000,//設定動畫在多久內完成
 });
-$('.ps_flpk').ps_flpk('setPercent');
-
-// $('.ps_flpk').ps_flpk('assignPercent', 50, function( progressNumber) {
-// 	// console.log(progressNumber);
-// });
 
 // $('.result').ps_flpk('assignPercent')
 	
@@ -58,9 +51,9 @@ $('.ps_flpk').ps_flpk('setPercent');
 第3次回傳資料：(100-36)*0.2+36=48.8
 第4次以此類推...
  */
-// $('.result').ps_flpk('assignPercent', 50);
-
-//這邊是在html檔中加的function
+$('.result').ps_flpk('assignPercent', 50, function( progressNumber ) {
+	console.log(progressNumber);
+});//這邊是在html檔中加的function
 //50是參數
 
 

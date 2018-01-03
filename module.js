@@ -8,110 +8,75 @@
 		this.ele = ele;
 		this.$ele = $(ele);
 		this.option = options;
-		this.progressNumber;
-		this.result='<div class="result" style="width:'+this.option.progressNumber+'%"></div>';
 	};
 	
 	// 下面是DEFAULTS物件 
 	Module.DEFAULTS = {
 			speed:1000,
-			progressNumber :50,
+			progressNumber:90,
      }
 	
-
 
 	
 	// document.getElementById('result').style.transition=this.option.speed+'ms';
 	
 	Module.prototype.init = function () {
-
-			var x = document.createElement("STYLE");
-			var t = document.createTextNode(".result {width:"+this.option.progressNumber+"%;}")
-			x.appendChild(t);
-    		document.head.appendChild(x);
-
-
-			console.log(this.option.progressNumber)
  			this.addTransition();
  			var progressNumber =0;
- 			var progressPercent=this.option.progressNumber;
-			console.log(progressPercent);
-			var a = document.getElementsByClassName('result');
-			console.log(a);
- 			// document.getElementById('result').style.width= progressNumber+'%';
+ 			document.getElementById('result').style.width= progressNumber+'%';
 	};
 
-	Module.prototype.setPercent = function( progressNumber){
+
+	Module.prototype.assignPercent = function(progressNumber){
 		this.addTransition();
-		// document.getElementById('result').style.width= this.option.progressNumber+'%';
+		document.getElementById('result').style.width= this.option.progressNumber+'%';
 		var progressNumber=this.option.progressNumber;
 		console.log(progressNumber +'%');
 		// return  this.option.progressNumber;
 	}
-
-
-//處理中 //卡住了,只能去從Default的option中去改變設定
-	Module.prototype.assignPercent = function( progressNumber){
-		this.addTransition();
-		// document.getElementById('result').style.width= this.option.progressNumber+'%';
-		var progressNumber=this.option.progressNumber;
-		console.log(progressNumber +'%');
-		// return  this.option.progressNumber;
-	}
-	// Module.prototype.assignPercent = function(a){
-	// 	this.a = a;
-	// 	this.addTransition();
-	// 	document.getElementById('result').style.width= this.a+'%';
-	// 	var a=this.a;
-	// 	console.log(a +'%');
-	// 	// return  this.option.progressNumber;
-	// }
 
 /////完成80%
-	Module.prototype.nextProgress = function(){
-		
-
-
-	var nowNumber= (document.getElementsByClassName("result").offsetWidth) / 800*100;
-	console.log(nowNumber);		
-		// this.addTransition();
-		// // console.log(nowNumber);
-		// var nextNumber= ( 100 - nowNumber ) / 5+nowNumber;
-		// var nowNumber= ++nextNumber;
-		// if(nowNumber<100 ){
-		// 	// document.getElementById('result').style.width=(nowNumber)+'%';
-		// 	console.log(nowNumber+'%')
-		// }
+	Module.prototype.nextProgress = function(progressNumber){
+		var nowNumber= (document.getElementById("result").offsetWidth) / 800*100;
+		this.addTransition();
+		// console.log(nowNumber);
+		var nextNumber= ( 100 - nowNumber )*0.2+nowNumber;
+		var nowNumber= ++nextNumber;
+		if(nowNumber<100 ){
+			document.getElementById('result').style.width=(nowNumber)+'%';
+			console.log(nowNumber+'%')
+		}
+		// var progressNumber=this.option.progressNumber;
+		// var nextNumber=(100 - progressNumber ) * 0.2 + progressNumber ;
+		// var progressNumber= ++ nextNumber;
+		// document.getElementById('result').style.width=progressNumber+'%';
+		// console.log(progressNumber+'%');
+		// return  this.option.progressNumber; 
 	}
 
 
-	Module.prototype.doneProgress = function(){
+	Module.prototype.doneProgress = function(progressNumber){
 		this.addTransition();
-		var x = document.createElement("STYLE");
-		var t = document.createTextNode(".result {width:100%;}")
-		x.appendChild(t);
-    	document.head.appendChild(x);
+		var progressNumber= 100;
+		document.getElementById('result').style.width=progressNumber+'%';
+		console.log(progressNumber+'%');
+		return  this.option.progressNumber;
 	}
 
-	Module.prototype.zeroProgress = function(){
+	Module.prototype.zeroProgress = function(progressNumber){
 		this.addTransition();
-		var x = document.createElement("STYLE");
-		var t = document.createTextNode(".result {width:0%;}")
-		x.appendChild(t);
-    	document.head.appendChild(x);
+		var progressNumber= 0;
+		document.getElementById('result').style.width=progressNumber+'%';
+		console.log(progressNumber+'%');
+		return  this.option.progressNumber;
 	}
 
 	Module.prototype.addTransition = function() {
-		var x = document.createElement("STYLE");
-		var t = document.createTextNode(".result {transition:"+this.option.speed+"ms;}")
-		x.appendChild(t);
-    	document.head.appendChild(x);
-		 // document.getElementById('result').style.transition=this.option.speed+'ms';
-	};
-	// if ( ! this.$ele.hasClass('transition') ) {
-	// 	this.$ele.addClass('transition');
-	// };
-	//判斷ele是否有transition,如果沒有則加。
+		// if ( ! this.$ele.hasClass('transition') ) {
+		// 	this.$ele.addClass('transition');
+		// };
+		document.getElementById('result').style.transition=this.option.speed+'ms';
+	};//判斷ele是否有transition,如果沒有則加。
 
 
 
