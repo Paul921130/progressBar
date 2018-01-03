@@ -11,6 +11,7 @@
 		this.progressPercent = 0;
 		this.result='<div class="result" style="width:'+this.option.progressNumber+'%"></div>';
 		this.$result=$('<div class="result" ></div>');
+		this.$bar = $('.result');
 	};
 	
 	// 下面是DEFAULTS物件 
@@ -25,19 +26,14 @@
 	// document.getElementById('result').style.transition=this.option.speed+'ms';
 	
 	Module.prototype.init = function () {
-			var x = document.createElement("STYLE");
-			var t = document.createTextNode(".result {width:"+this.option.progressNumber+"%;}")
-			x.appendChild(t);
-    		document.head.appendChild(x);
-
-
-			console.log(this.option.progressNumber)
+			var barLenght = this.option.progressNumber;
+			this.$bar.width(barLenght+'%');
  			this.addTransition();
- 			var progressNumber =0;
- 			var progressPercent=this.option.progressNumber;
-			console.log(progressPercent);
-			var a = document.getElementsByClassName('result');
-			console.log(a);
+ 		// 	var progressNumber =0;
+ 		// 	var progressPercent=this.option.progressNumber;
+			// console.log(progressPercent);
+			// var a = document.getElementsByClassName('result');
+			// console.log(a);
  			// document.getElementById('result').style.width= progressNumber+'%';
 	};
 
@@ -69,6 +65,7 @@
 
 /////完成80%
 	Module.prototype.nextProgress = function(){
+		
 		this.appendChild('<div class="result" style="width:50%"></div>');
 		// var nowNumber= (document.getElementsByClassName("result").offsetWidth) / 800*100;
 		// console.log(nowNumber);		
@@ -85,19 +82,14 @@
 
 	Module.prototype.doneProgress = function(){
 		this.addTransition();
-		var x = document.createElement("STYLE");
-		var t = document.createTextNode(".result {width:100%;}")
-		x.appendChild(t);
-    	document.head.appendChild(x);
-  		
+		var barLenght = 100;
+		this.$bar.width(barLenght+'%');  		
 	}
 
 	Module.prototype.zeroProgress = function(){
 		this.addTransition();
-		var x = document.createElement("STYLE");
-		var t = document.createTextNode(".result {width:0%;}")
-		x.appendChild(t);
-		document.head.appendChild(x);
+		var barLenght = 0;
+		this.$bar.width(barLenght+'%');
 	}
 
 	Module.prototype.addTransition = function() {
