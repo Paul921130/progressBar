@@ -8,8 +8,9 @@
 		this.ele = ele;
 		this.$ele = $(ele);
 		this.option = options;
-		this.progressNumber;
+		this.progressPercent = 0;
 		this.result='<div class="result" style="width:'+this.option.progressNumber+'%"></div>';
+		this.$result=$('<div class="result" ></div>');
 	};
 	
 	// 下面是DEFAULTS物件 
@@ -24,7 +25,6 @@
 	// document.getElementById('result').style.transition=this.option.speed+'ms';
 	
 	Module.prototype.init = function () {
-
 			var x = document.createElement("STYLE");
 			var t = document.createTextNode(".result {width:"+this.option.progressNumber+"%;}")
 			x.appendChild(t);
@@ -69,11 +69,9 @@
 
 /////完成80%
 	Module.prototype.nextProgress = function(){
-		
-
-
-	var nowNumber= (document.getElementsByClassName("result").offsetWidth) / 800*100;
-	console.log(nowNumber);		
+		this.appendChild('<div class="result" style="width:50%"></div>');
+		// var nowNumber= (document.getElementsByClassName("result").offsetWidth) / 800*100;
+		// console.log(nowNumber);		
 		// this.addTransition();
 		// // console.log(nowNumber);
 		// var nextNumber= ( 100 - nowNumber ) / 5+nowNumber;
@@ -91,6 +89,7 @@
 		var t = document.createTextNode(".result {width:100%;}")
 		x.appendChild(t);
     	document.head.appendChild(x);
+  		
 	}
 
 	Module.prototype.zeroProgress = function(){
@@ -98,7 +97,7 @@
 		var x = document.createElement("STYLE");
 		var t = document.createTextNode(".result {width:0%;}")
 		x.appendChild(t);
-    	document.head.appendChild(x);
+		document.head.appendChild(x);
 	}
 
 	Module.prototype.addTransition = function() {
