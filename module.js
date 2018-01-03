@@ -29,6 +29,7 @@
 			var barLenght = this.option.progressNumber;
 			this.$bar.width(barLenght+'%');
  			this.addTransition();
+ 			//設定result長度
  		// 	var progressNumber =0;
  		// 	var progressPercent=this.option.progressNumber;
 			// console.log(progressPercent);
@@ -65,7 +66,7 @@
 
 /////完成80%
 	Module.prototype.nextProgress = function(){
-		
+
 		this.appendChild('<div class="result" style="width:50%"></div>');
 		// var nowNumber= (document.getElementsByClassName("result").offsetWidth) / 800*100;
 		// console.log(nowNumber);		
