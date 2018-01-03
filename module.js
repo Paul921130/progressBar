@@ -33,31 +33,39 @@
 	};
 
 
-
-
-
 	Module.prototype.assignPercent = function(progressNumber){
 		this.addTransition();
 		document.getElementById('result').style.width= this.option.progressNumber+'%';
 		console.log(progressNumber +'%');
-		return  progressNumber;
+		return  this.option.progressNumber;
 	}
 
-
+///////////////////////////////////////正在處理中
 	Module.prototype.nextProgress = function(progressNumber){
+		var nowNumber= (document.getElementById("result").offsetWidth) / 800*100;
 		this.addTransition();
-		var progressNumber =(100 - progressNumber ) * 0.2 + progressNumber ;
-		document.getElementById('result').style.width=progressNumber+'%';
-		console.log(progressNumber+'%');
-		return  progressNumber; 
+		// console.log(nowNumber);
+		var nextNumber= (100-nowNumber)*0.2+nowNumber;
+		var nowNumber= ++ nextNumber;
+		if(nowNumber<100 ){
+			document.getElementById('result').style.width=(nowNumber)+'%';
+			console.log(nowNumber+'%')
+		}
+		// var progressNumber=this.option.progressNumber;
+		// var nextNumber=(100 - progressNumber ) * 0.2 + progressNumber ;
+		// var progressNumber= ++ nextNumber;
+		// document.getElementById('result').style.width=progressNumber+'%';
+		// console.log(progressNumber+'%');
+		// return  this.option.progressNumber; 
 	}
+
 
 	Module.prototype.doneProgress = function(progressNumber){
 		this.addTransition();
 		var progressNumber= 100;
 		document.getElementById('result').style.width=progressNumber+'%';
 		console.log(progressNumber+'%');
-		return  progressNumber; 
+	return  this.option.progressNumber;
 	}
 
 	Module.prototype.zeroProgress = function(progressNumber){
@@ -65,7 +73,7 @@
 		var progressNumber= 0;
 		document.getElementById('result').style.width=progressNumber+'%';
 		console.log(progressNumber+'%');
-		return  progressNumber;
+		return  this.option.progressNumber;
 	}
 
 	Module.prototype.addTransition = function() {
