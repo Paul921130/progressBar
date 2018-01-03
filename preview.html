@@ -27,15 +27,19 @@
 
 
 <script>
+
 $('.result').ps_flpk({
-	speed:3000,//ms
+	speed:3000,//設定動畫在多久內完成
 });
 
+// $('.result').ps_flpk('assignPercent')
+	
+// };
 // $('.result').ps_flpk({
 // 	// 設定動畫在多久內完成
 // 	speed:1000,
 // });
-$('.result').ps_flpk('assignPercent');
+// $('.result').ps_flpk('assignPercent');
 // $('.result').ps_flpk('zeroProgress');
 // $('.result').ps_flpk('doneProgress');
 
@@ -47,6 +51,16 @@ $('.result').ps_flpk('assignPercent');
 第3次回傳資料：(100-36)*0.2+36=48.8
 第4次以此類推...
  */
+$('.result').ps_flpk('assignPercent', 50, function( progressNumber ) {
+	console.log(progressNumber);
+});//這邊是在html檔中加的function
+//50是參數
+
+
+
+
+
+
 
 // $('.result').ps_flpk('nextProgress', function( progressNumber ) {
 // 	console.log(progressNumber);

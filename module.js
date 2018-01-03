@@ -8,18 +8,12 @@
 		this.ele = ele;
 		this.$ele = $(ele);
 		this.option = options;
-		this.satePoint =['zero','done'];
-		this.sate= 0;
-		this.timer
 	};
 	
 	// 下面是DEFAULTS物件 
 	Module.DEFAULTS = {
-			speed:3000,
-			progressNumber:50,
-            radius: '0px',
-            height: '3px',
-            width: '100%'
+			speed:1000,
+			progressNumber:90,
      }
 	
 
@@ -27,26 +21,27 @@
 	// document.getElementById('result').style.transition=this.option.speed+'ms';
 	
 	Module.prototype.init = function () {
+ 			this.addTransition();
  			var progressNumber =0;
  			document.getElementById('result').style.width= progressNumber+'%';
-			this.addTransition();
 	};
 
 
 	Module.prototype.assignPercent = function(progressNumber){
 		this.addTransition();
 		document.getElementById('result').style.width= this.option.progressNumber+'%';
+		var progressNumber=this.option.progressNumber;
 		console.log(progressNumber +'%');
-		return  this.option.progressNumber;
+		// return  this.option.progressNumber;
 	}
 
-///////////////////////////////////////正在處理中
+/////完成80%
 	Module.prototype.nextProgress = function(progressNumber){
 		var nowNumber= (document.getElementById("result").offsetWidth) / 800*100;
 		this.addTransition();
 		// console.log(nowNumber);
-		var nextNumber= (100-nowNumber)*0.2+nowNumber;
-		var nowNumber= ++ nextNumber;
+		var nextNumber= ( 100 - nowNumber )*0.2+nowNumber;
+		var nowNumber= ++nextNumber;
 		if(nowNumber<100 ){
 			document.getElementById('result').style.width=(nowNumber)+'%';
 			console.log(nowNumber+'%')
@@ -65,7 +60,7 @@
 		var progressNumber= 100;
 		document.getElementById('result').style.width=progressNumber+'%';
 		console.log(progressNumber+'%');
-	return  this.option.progressNumber;
+		return  this.option.progressNumber;
 	}
 
 	Module.prototype.zeroProgress = function(progressNumber){
