@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="../core/core.css" rel="stylesheet">
 	<link href="css.css" rel="stylesheet">
-	<title>單獨模組樣式檢視(Banner)</title>
+	<title>單獨模組樣式檢視(ProgressBar)</title>
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="./module.js"></script>
 </head>
@@ -34,20 +34,12 @@ $('.ps_flpk').ps_flpk({
 	speed:3000,//設定動畫在多久內完成
 	progressNumber: 30,//是錯的 不應該在這裡設定
 });
-
-// $('.ps_flpk').ps_flpk('setPercent');
-
 	
  $('.ps_flpk').ps_flpk('assignPercent', 50, function( progressNumber) {
  	console.log(progressNumber);
  });
-//這邊是在html檔中加的function
 //50是option
-
-// $('.ps_flpk').ps_flpk('assignPercent')
-	
-// };
-
+// $('.ps_flpk').ps_flpk('nextProgress')
 // $('.ps_flpk').ps_flpk('zeroProgress');
 // $('.ps_flpk').ps_flpk('doneProgress');
 
