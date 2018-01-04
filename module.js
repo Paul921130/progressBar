@@ -20,70 +20,54 @@
 			progressNumber : 90,
      }
 	
-
-
 	
 	// document.getElementById('result').style.transition=this.option.speed+'ms';
 	
-	Module.prototype.init = function () {
+	Module.prototype.init = function (progressNumber) {
 			var progressNumber=this.option.progressNumber;
  			this.addTransition();
  			//設定result長度
  			this.$bar.width(progressNumber + '%');
- 			// var  w=this.$bar.width();	
-	};
-
-	Module.prototype.assignPercent = function( asOpt ,progressNumber){
+	};	
+	
+	Module.prototype.assignPercent = function( asOpt ,asOpt2){
 		this.addTransition();
-		var asWidth = asOpt;
-		if(asWidth <=100 && asWidth >= 0){
-			console.log('現在寬度:'+asWidth + '%');
-			this.$bar.width(asWidth + '%');
-		}else if( asWidth < 0 ){
+		if(asOpt <=100 && asOpt >= 0){
+			// console.log('現在寬度:'+asOpt + '%');
+			this.$bar.width(asOpt + '%');
+		}else if( asOpt < 0 ){
 			this.$bar.width(0 + '%');
-			console.log('現在寬度:'+0+ '%');			
+			// console.log('現在寬度:'+0+ '%');			
 		}else{
 			this.$bar.width(100 + '%');
-			console.log('現在寬度:'+ 100 + '%');
-		}
-		// var b = this.option.progressNumber = this.assignPercent.option;
-		// console.log(b);
-
-		// var progressNumber = this.option.progressNumber;
-		// var a =this.assignPercent.options;
-		// console.log(a);
-		Module.prototype.progressNumber = function(){
-			console.log('原設定的寬度'+this.option.progressNumber+'%');
+			// console.log('現在寬度:'+ 100 + '%');
 		}
 
-		var progressNumber = asWidth;
-		console.log(progressNumber + '%');
-		// this.progressNumber();
+		var progressNumber = asOpt;
+		console.log(progressNumber);
 	}
 
-
+	 
 
 /////完成80%
-	Module.prototype.nextProgress = function(){
+	Module.prototype.nextProgress = function(progressNumber){
 		this.addTransition();
 		var nowNumber = this.$bar.width() / 800 *100;
 		//抓出result的width;
-		var nextNumber= ( 100 - nowNumber ) / 5+nowNumber;
-		
+		var nextNumber= ( 100 - nowNumber ) /5 + nowNumber;
 		var nowNumber= ++nextNumber;
-		
 		if(nowNumber<100 ){
 			this.$bar.width(nowNumber+'%');
 		}	
 	}
 
 
-	Module.prototype.doneProgress = function(){
+	Module.prototype.doneProgress = function(progressNumber){
 		this.addTransition();
 		this.$bar.width(100+'%');  		
 	}
 
-	Module.prototype.zeroProgress = function(){
+	Module.prototype.zeroProgress = function(progressNumber){
 		this.addTransition();
 		this.$bar.width(0 +'%');
 	}
@@ -111,16 +95,16 @@
 			if ( !!module ) {
 				if ( typeof method === 'string' &&  typeof options === 'undefined' ) {
 					module[method]();
-				} else if ( typeof method === 'string' && typeof options === 'object' || typeof options === 'string' || typeof options === 'number' ) {
+				} else if ( typeof method === 'string' && typeof options === 'object' || typeof options === 'string' || typeof options === 'number' ||typeof options === 'function') {
 					module[method](options);
-				} else if ( typeof method === 'string' && typeof options === 'object' || typeof options === 'string' || typeof options === 'number' && typeof options2 === 'object' || typeof options2 === 'string' || typeof options2 === 'number') {
+				} else if ( typeof method === 'string' && typeof options === 'object' || typeof options === 'string' || typeof options === 'number' && typeof options2 === 'object' || typeof options2 === 'string' || typeof options2 === 'number'|| typeof options2 === 'function') {
 					module[method](options)(options2);
 				} else {
 					console.log('unsupported options!');
 				}
 			} else {
 				opts = $.extend( {}, Module.DEFAULTS, ( typeof method === 'object' && method ), ( typeof options === 'object' && options ), ( typeof options2 === 'object' && options2 ) );
-				module = new Module(this, opts, opts2);
+				module = new Module(this, opts , opts2);
 				$this.data(ModuleName, module);
 				module.init();
 				// 執行的function	
