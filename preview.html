@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="../core/core.css" rel="stylesheet">
 	<link href="css.css" rel="stylesheet">
-	<title>單獨模組樣式檢視(Banner)</title>
+	<title>單獨模組樣式檢視(ProgressBar)</title>
 	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="./module.js"></script>
 </head>
@@ -22,25 +22,26 @@
 	</div>
 </div>
 <div class="ps_flpk">
-		<div class="result" id="result"></div>
+	<div class="result" ></div>
 </div>
 
 
+
+
 <script>
-$('.result').ps_flpk({
-	speed:1000,
+
+$('.ps_flpk').ps_flpk({
+	speed:3000,//設定動畫在多久內完成
+	progressNumber: 30,//是錯的 不應該在這裡設定
 });
-
-// $('.result').ps_flpk({
-// 	// 設定動畫在多久內完成
-// 	speed:1000,
-// });
-
-
-// $('.result').ps_flpk('assignPercent');
-
-// $('.result').ps_flpk('zeroProgress');
-// $('.result').ps_flpk('doneProgress');
+	
+ $('.ps_flpk').ps_flpk('assignPercent', 50, function( progressNumber) {
+ 	console.log(progressNumber);
+ });
+//50是option
+// $('.ps_flpk').ps_flpk('nextProgress')
+// $('.ps_flpk').ps_flpk('zeroProgress');
+// $('.ps_flpk').ps_flpk('doneProgress');
 
 /*
 規則如下(也可參照示意圖)：(100 - 已完成進度百分比) * 0.2 + 已完成的進度百分比 = 進度條要跑到的百分比
@@ -51,15 +52,15 @@ $('.result').ps_flpk({
 第4次以此類推...
  */
 
-// $('.result').ps_flpk('nextProgress', function( progressNumber ) {
+// $('.ps_flpk').ps_flpk('nextProgress', function( progressNumber ) {
 // 	console.log(progressNumber);
 // });
 
-// $('.result').ps_flpk('doneProgress', function( progressNumber ) {
+// $('.ps_flpk').ps_flpk('doneProgress', function( progressNumber ) {
 // 	console.log(progressNumber);
 // });
 
-// $('.result').ps_flpk('zeroProgress', function( progressNumber ) {
+// $('.ps_flpk').ps_flpk('zeroProgress', function( progressNumber ) {
 // 	console.log(progressNumber);
 // });
 
