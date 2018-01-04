@@ -13,7 +13,7 @@
 		this.$result=$('<div class="result" ></div>');
 		this.$bar = $('.result');
 	};
-	
+
 	// 下面是DEFAULTS物件 
 	Module.DEFAULTS = {
 			speed:1000,
@@ -33,20 +33,6 @@
  			// var  w=this.$bar.width();	
 	};
 
-	// Module.prototype.setPercent = function( progressNumber){
-	// 	this.addTransition();
-	// 	var barWidth=this.$bar.width() / 800 * 100;
-	// 	// var progressNumber=this.option.progressNumber;
-	// 	console.log( barWidth +'%');
-	// }
-
-
-//處理中 //卡住了,只能去從Default的option中去改變設定
-	// Module.prototype.assignPercent = function( progressNumber){
-	// 	this.addTransition();
-	// 	var progressNumber=this.option.progressNumber;
-	// 	console.log(progressNumber +'%');
-	// }
 	Module.prototype.assignPercent = function( asOpt ,progressNumber){
 		this.addTransition();
 		var asWidth = asOpt;
@@ -60,19 +46,22 @@
 			this.$bar.width(100 + '%');
 			console.log('現在寬度:'+ 100 + '%');
 		}
-		
 		// var b = this.option.progressNumber = this.assignPercent.option;
 		// console.log(b);
 
 		// var progressNumber = this.option.progressNumber;
 		// var a =this.assignPercent.options;
 		// console.log(a);
-		
- 		Module.prototype.progressNumber = function(){
+		Module.prototype.progressNumber = function(){
 			console.log('原設定的寬度'+this.option.progressNumber+'%');
 		}
-		this.progressNumber();
+
+		var progressNumber = asWidth;
+		console.log(progressNumber + '%');
+		// this.progressNumber();
 	}
+
+
 
 /////完成80%
 	Module.prototype.nextProgress = function(){
@@ -138,5 +127,5 @@
 		}
 		});
 	};
-
+/////////////////////////要注意user的option數量,如果不足就要增加
 })(jQuery);
