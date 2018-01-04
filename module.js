@@ -73,15 +73,16 @@
 	}
 
 	Module.prototype.addTransition = function() {
-		var x = document.createElement("STYLE");
-		var t = document.createTextNode(".result {transition:"+this.option.speed+"ms;}")
-		x.appendChild(t);
-    	document.head.appendChild(x);
+		if ( ! this.$bar.hasClass('transition') ) {
+			this.$bar.addClass('transition');
+		};
+		// var x = document.createElement("STYLE");
+		// var t = document.createTextNode(".result {transition:"+this.option.speed+"ms;}")
+		// x.appendChild(t);
+  //   	document.head.appendChild(x);
 	};
 
-	// if ( ! this.$ele.hasClass('transition') ) {
-	// 	this.$ele.addClass('transition');
-	// };
+	
 	//判斷ele是否有transition,如果沒有則加。
 
 
