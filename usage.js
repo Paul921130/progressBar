@@ -10,7 +10,7 @@ $('.ps_flpk').ps_flpk({
 });
 
 $('.ps_flpk').ps_flpk('assignPercent', 50, function( progressNumber ) {
-	console.log(progressNumber);
+	 console.log(progressNumber);
 });
 
 /*
@@ -23,8 +23,7 @@ $('.ps_flpk').ps_flpk('assignPercent', 50, function( progressNumber ) {
  */
 
 $('.ps_flpk').ps_flpk('nextProgress', function( progressNumber ) {
-	var x = true;
-	console.log(progressNumber, x);
+	console.log(progressNumber);
 });
 
 $('.ps_flpk').ps_flpk('doneProgress', function( progressNumber ) {
