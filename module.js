@@ -73,13 +73,17 @@
 	}
 
 	Module.prototype.addTransition = function() {
-		if ( ! this.$bar.hasClass('transition') ) {
-			this.$bar.addClass('transition');
-		};
-	};
+		var transtionNumber = this.option.speed+'ms';
+		this.$bar.css('transition',transtionNumber);
 
+	};
+		// if ( ! this.$bar.hasClass('transition') ) {
+		// 	this.$bar.addClass('transition');
+		// };
+		// var a=$('.result').hasClass('transition'); 
+   	 	// console.log(a); 
 	
-	//判斷ele是否有transition,如果沒有則加。
+
 
 
 
