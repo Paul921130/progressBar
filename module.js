@@ -12,6 +12,7 @@
 		this.progressPercent = 0;
 		this.$result=$('<div class="result" ></div>');
 		this.$bar = $('.result');
+		this.$totalWidth =$('.ps_flpk').width();
 		this.transitionEndEvent = function (transitions){
 			var a = document.createElement("fakeelement");
 			for (var t in transitions){
@@ -24,7 +25,7 @@
 			});
 		//判斷模組有在進行transition!!!	
 		// this.getBarLength=function(barLenght){
-		//   	var barLenght = $('.result').width()/800*100;
+		//   	var barLenght = $('.result').width()/this.$totalWidth*100;
 		//   	console.log( barLenght+'%');
 		//   }
 		// this.Time = setInterval(this.getBarLength, 100);
@@ -59,7 +60,7 @@
 	}
 /////完成80%
 	Module.prototype.nextProgress = function(neOpt){
-		var nowNumber = this.$bar.width() / 800 *100;
+		var nowNumber = this.$bar.width() / this.$totalWidth *100;
 		//抓出result的width;
 		var nextNumber= ( 100 - nowNumber ) / 5 + nowNumber;
 		var nowNumber =+ nextNumber;
@@ -96,7 +97,7 @@
 	};
 		
    	Module.prototype.transitionEnd = function () {
-   		var nowWidth=$('.result').width() /800*100;
+   		var nowWidth=$('.result').width() /this.$totalWidth*100;
    		console.log(nowWidth+'%');
    		return this;
    		// console.log('我知道這樣不好');
