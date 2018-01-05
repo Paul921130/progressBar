@@ -76,6 +76,8 @@
 		if ( ! this.$bar.hasClass('transition') ) {
 			this.$bar.addClass('transition');
 		};
+		// var a=$('.result').hasClass('transition');
+		// console.log(a);
 		// var x = document.createElement("STYLE");
 		// var t = document.createTextNode(".result {transition:"+this.option.speed+"ms;}")
 		// x.appendChild(t);
