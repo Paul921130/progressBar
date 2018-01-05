@@ -53,13 +53,13 @@
 		}else{
 			this.$bar.width(100 + '%');
 		}
+		return this;
 		var progressNumber = asOpt2;
-		// var number=asOpt;
-		// progressNumber(number+'%');			 		
+		var number=asOpt;
+		progressNumber(number+'%');			 		
 	}
 /////完成80%
 	Module.prototype.nextProgress = function(neOpt){
-
 		var nowNumber = this.$bar.width() / 800 *100;
 		//抓出result的width;
 		var nextNumber= ( 100 - nowNumber ) /5 + nowNumber;
@@ -68,20 +68,18 @@
 			this.$bar.width(nowNumber+'%');
 		}
 		if(typeof neOpt==='function' ){
+			return this;
 			var progressNumber = neOpt;
 			var number = nowNumber;
 			progressNumber(number+'%');
 		}
-
-		
-		// var number=nowNumber;
-		// progressNumber(number+'%')	
 	}
 
 
 	Module.prototype.doneProgress = function(dOpt){
 		this.$bar.width(100+'%');
 		if(typeof dOpt==='function' ){
+			return this;
 			var progressNumber = dOpt;
 			progressNumber(100+'%');
 		}		  		
@@ -90,6 +88,7 @@
 	Module.prototype.zeroProgress = function(zOpt){
 		this.$bar.width(0 +'%');
 		if(typeof zOpt==='function' ){
+			return this;
 			var progressNumber = zOpt;
 			progressNumber(0+'%');
 		}
@@ -101,9 +100,10 @@
 	};
 		
    	Module.prototype.transitionEnd = function () {
-   		var nowWidth=$('.result').width()/800*100;
+   		var nowWidth=$('.result').width() /800*100;
    		console.log(nowWidth+'%');
-   		console.log('我知道這樣不好');
+   		return this;
+   		// console.log('我知道這樣不好');
 	};
 
 
@@ -135,7 +135,7 @@
 					} else {
 						module.transitionEnd();
 					}
-				//抓住模組有在進行(on)transition事件
+				//模組(on)transition事件
 			});
 			}
 		});
