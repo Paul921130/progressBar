@@ -12,6 +12,9 @@
 		this.progressPercent = 0;
 		this.$result=$('<div class="result" ></div>');
 		this.$bar = $('.result');
+		this.progressNumber= function() {
+			console.log(progressNumber);
+		}
 	};
 	
 	// 下面是DEFAULTS物件 
@@ -39,7 +42,13 @@
 		}else{
 			this.$bar.width(100 + '%');
 		}
+		// console.log(asOpt);
+		// console.log(asOpt2);
+		// var asOpt2 =function( progressNumber){
+		// 	var progressNumber=asOpt;
+		// };
 		var progressNumber = asOpt;
+	
 		// var this.asOpt2 = function(progressNumber){
 		// 	console.log(progressNumber);
 		// };
