@@ -23,7 +23,7 @@
 	
 	// document.getElementById('result').style.transition=this.option.speed+'ms';
 	
-	Module.prototype.init = function (progressNumber) {
+	Module.prototype.init = function () {
 			var progressNumber=this.option.progressNumber;
  			this.addTransition();
  			//設定result長度
@@ -31,7 +31,6 @@
 	};	
 	
 	Module.prototype.assignPercent = function( asOpt ,asOpt2){
-		this.addTransition();
 		if(asOpt <=100 && asOpt >= 0){
 			// console.log('現在寬度:'+asOpt + '%');
 			this.$bar.width(asOpt + '%');
@@ -42,7 +41,6 @@
 			this.$bar.width(100 + '%');
 			// console.log('現在寬度:'+ 100 + '%');
 		}
-
 		var progressNumber = asOpt;
 		console.log(progressNumber);
 	}
@@ -63,19 +61,16 @@
 
 
 	Module.prototype.doneProgress = function(progressNumber){
-		this.addTransition();
 		this.$bar.width(100+'%');  		
 	}
 
 	Module.prototype.zeroProgress = function(progressNumber){
-		this.addTransition();
 		this.$bar.width(0 +'%');
 	}
 
 	Module.prototype.addTransition = function() {
 		var transtionNumber = this.option.speed+'ms';
 		this.$bar.css('transition',transtionNumber);
-
 	};
 		// if ( ! this.$bar.hasClass('transition') ) {
 		// 	this.$bar.addClass('transition');
@@ -99,7 +94,7 @@
 				} else if ( typeof method === 'string' && typeof options === 'object' || typeof options === 'string' || typeof options === 'number' ||typeof options === 'function') {
 					module[method](options);
 				} else if ( typeof method === 'string' && typeof options === 'object' || typeof options === 'string' || typeof options === 'number' && typeof options2 === 'object' || typeof options2 === 'string' || typeof options2 === 'number'|| typeof options2 === 'function') {
-					module[method](options)(options2);
+					module[method](options, options2);
 				} else {
 					console.log('unsupported options!');
 				}

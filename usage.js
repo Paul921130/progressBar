@@ -23,7 +23,8 @@ $('.ps_flpk').ps_flpk('assignPercent', 50, function( progressNumber ) {
  */
 
 $('.ps_flpk').ps_flpk('nextProgress', function( progressNumber ) {
-	console.log(progressNumber);
+	var x = true;
+	console.log(progressNumber, x);
 });
 
 $('.ps_flpk').ps_flpk('doneProgress', function( progressNumber ) {

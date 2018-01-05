@@ -1,12 +1,12 @@
 .ps_flpk{
 	margin: 90px auto;
 	width: 800px;
-	height: 4px;
+	height: 3px;
 	background-color: #aaa;
 }
 .result{
-	height: 4px;
-	background-color: pink;
+	height: 3px;
+	background-color:#fe8b88;
 }
 .transition{
 	transition:1000ms;
