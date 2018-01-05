@@ -76,12 +76,6 @@
 		if ( ! this.$bar.hasClass('transition') ) {
 			this.$bar.addClass('transition');
 		};
-		// var a=$('.result').hasClass('transition');
-		// console.log(a);
-		// var x = document.createElement("STYLE");
-		// var t = document.createTextNode(".result {transition:"+this.option.speed+"ms;}")
-		// x.appendChild(t);
-  //   	document.head.appendChild(x);
 	};
 
 	
@@ -114,5 +108,5 @@
 		}
 		});
 	};
-/////////////////////////要注意user的option數量,如果不足就要增加
+/////////////////////////注意option數量
 })(jQuery);
