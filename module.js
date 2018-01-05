@@ -13,7 +13,7 @@
 		this.$result=$('<div class="result" ></div>');
 		this.$bar = $('.result');
 	};
-
+	
 	// 下面是DEFAULTS物件 
 	Module.DEFAULTS = {
 			speed:1000,
@@ -30,19 +30,20 @@
  			this.$bar.width(progressNumber + '%');
 	};	
 	
-	Module.prototype.assignPercent = function( asOpt ,asOpt2){
+	Module.prototype.assignPercent = function( asOpt ,asOpt2 ){
+
 		if(asOpt <=100 && asOpt >= 0){
-			// console.log('現在寬度:'+asOpt + '%');
 			this.$bar.width(asOpt + '%');
 		}else if( asOpt < 0 ){
 			this.$bar.width(0 + '%');
-			// console.log('現在寬度:'+0+ '%');			
 		}else{
 			this.$bar.width(100 + '%');
-			// console.log('現在寬度:'+ 100 + '%');
 		}
 		var progressNumber = asOpt;
-		console.log(progressNumber);
+		// var this.asOpt2 = function(progressNumber){
+		// 	console.log(progressNumber);
+		// };
+		// console.log(progressNumber);
 	}
 
 	 
@@ -93,7 +94,7 @@
 					module[method]();
 				} else if ( typeof method === 'string' && typeof options === 'object' || typeof options === 'string' || typeof options === 'number' ||typeof options === 'function') {
 					module[method](options);
-				} else if ( typeof method === 'string' && typeof options === 'object' || typeof options === 'string' || typeof options === 'number' && typeof options2 === 'object' || typeof options2 === 'string' || typeof options2 === 'number'|| typeof options2 === 'function') {
+				} else if ( typeof method === 'string' && typeof options === 'object' || typeof options === 'string' || typeof options2 === 'string' || typeof options2 === 'number'|| typeof options2 === 'function') {
 					module[method](options, options2);
 				} else {
 					console.log('unsupported options!');
