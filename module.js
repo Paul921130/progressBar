@@ -53,7 +53,6 @@
 		}else{
 			this.$bar.width(100 + '%');
 		}
-		return this;
 		var progressNumber = asOpt2;
 		var number=asOpt;
 		progressNumber(number+'%');			 		
@@ -62,13 +61,12 @@
 	Module.prototype.nextProgress = function(neOpt){
 		var nowNumber = this.$bar.width() / 800 *100;
 		//抓出result的width;
-		var nextNumber= ( 100 - nowNumber ) /5 + nowNumber;
+		var nextNumber= ( 100 - nowNumber ) / 5 + nowNumber;
 		var nowNumber =+ nextNumber;
 		if( nowNumber < 100 ){
 			this.$bar.width(nowNumber+'%');
 		}
 		if(typeof neOpt==='function' ){
-			return this;
 			var progressNumber = neOpt;
 			var number = nowNumber;
 			progressNumber(number+'%');
@@ -79,7 +77,6 @@
 	Module.prototype.doneProgress = function(dOpt){
 		this.$bar.width(100+'%');
 		if(typeof dOpt==='function' ){
-			return this;
 			var progressNumber = dOpt;
 			progressNumber(100+'%');
 		}		  		
@@ -88,7 +85,6 @@
 	Module.prototype.zeroProgress = function(zOpt){
 		this.$bar.width(0 +'%');
 		if(typeof zOpt==='function' ){
-			return this;
 			var progressNumber = zOpt;
 			progressNumber(0+'%');
 		}
