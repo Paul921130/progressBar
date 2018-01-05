@@ -12,12 +12,22 @@
 		this.progressPercent = 0;
 		this.$result=$('<div class="result" ></div>');
 		this.$bar = $('.result');
-		
+		this.transitionEndEvent = function (transitions){
+			var a = document.createElement("fakeelement");
+			for (var t in transitions){
+				if (a.style[t] !== undefined){
+					return transitions[t];
+				}
+			}
+			}({
+				"transition": "transitionend",
+			});
+		//判斷模組有在進行transition!!!	
 		// this.getBarLength=function(barLenght){
-		//  	var barLenght = $('.result').width()/800*100;
-		//  	console.log( barLenght+'%');
-		//  }
-		//  this.Time = setInterval(this.getBarLength, 100);
+		//   	var barLenght = $('.result').width()/800*100;
+		//   	console.log( barLenght+'%');
+		//   }
+		// this.Time = setInterval(this.getBarLength, 100);
 
 	};
 	
@@ -27,21 +37,12 @@
 		progressNumber : 90,
      }
 	
-	
-	// document.getElementById('result').style.transition=this.option.speed+'ms';
-	
+//這裡有clearTimer()
 	Module.prototype.init = function () {
-		
 		var progressNumber=this.option.progressNumber;
  		this.addTransition();
  		//設定result長度
  		this.$bar.width(progressNumber + '%');
- 		this.clearTimer();
- 		// if(this.$barLenght === 50){
- 		// 	this.clearTimer();
- 		// }
- 		var barLenght=$('.result').width()/800*100;
- 		console.log(barLenght);
 	};
 	
 	Module.prototype.assignPercent = function( asOpt , asOpt2){
@@ -53,12 +54,12 @@
 			this.$bar.width(100 + '%');
 		}
 		var progressNumber = asOpt2;
-		var number=asOpt;
-		progressNumber(number+'%')		
+		// var number=asOpt;
+		// progressNumber(number+'%');			 		
 	}
 /////完成80%
 	Module.prototype.nextProgress = function(neOpt){
-		this.addTransition();
+
 		var nowNumber = this.$bar.width() / 800 *100;
 		//抓出result的width;
 		var nextNumber= ( 100 - nowNumber ) /5 + nowNumber;
@@ -66,7 +67,7 @@
 		if( nowNumber < 100 ){
 			this.$bar.width(nowNumber+'%');
 		}
-		if( neOpt!=={} ){
+		if(typeof neOpt==='function' ){
 			var progressNumber = neOpt;
 			var number = nowNumber;
 			progressNumber(number+'%');
@@ -80,30 +81,30 @@
 
 	Module.prototype.doneProgress = function(dOpt){
 		this.$bar.width(100+'%');
-		var progressNumber = dOpt;
-		progressNumber(100+'%');
-		  		
+		if(typeof dOpt==='function' ){
+			var progressNumber = dOpt;
+			progressNumber(100+'%');
+		}		  		
 	}
 
 	Module.prototype.zeroProgress = function(zOpt){
 		this.$bar.width(0 +'%');
-		var progressNumber = zOpt;
-		progressNumber(0+'%');
+		if(typeof zOpt==='function' ){
+			var progressNumber = zOpt;
+			progressNumber(0+'%');
+		}
 	}
 
 	Module.prototype.addTransition = function() {
 		var transtionNumber = this.option.speed+'ms';
 		this.$bar.css('transition',transtionNumber);
 	};
-		// if ( ! this.$bar.hasClass('transition') ) {
-		// 	this.$bar.addClass('transition');
-		// };
-		// var a=$('.result').hasClass('transition'); 
-   	 	// console.log(a); 
-	
-	Module.prototype.clearTimer = function() {
-		clearInterval( this.Time );
-	}
+		
+   	Module.prototype.transitionEnd = function () {
+   		var nowWidth=$('.result').width()/800*100;
+   		console.log(nowWidth+'%');
+   		console.log('我知道這樣不好');
+	};
 
 
 
@@ -128,6 +129,14 @@
 				$this.data(ModuleName, module);
 				module.init();
 				// 執行的function
+				module.$ele.on(module.transitionEndEvent, function(e, ignore) {
+					if (ignore) {
+						console.log('trigger transitionend and dont run anything');
+					} else {
+						module.transitionEnd();
+					}
+				//抓住模組有在進行(on)transition事件
+			});
 			}
 		});
 	};
